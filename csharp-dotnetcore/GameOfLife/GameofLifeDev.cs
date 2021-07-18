@@ -9,7 +9,7 @@ namespace GameOfLife
         {
 
         }
-        public Cell PlayGame(Cell currentCell,List<Cell> neigbourcells)
+        public Cell playGame(Cell currentCell,List<Cell> neigbourcells)
         {
             int deadStateCount = 0;
          
@@ -38,7 +38,7 @@ namespace GameOfLife
             return currentCell;
         }
 
-        public Cell PlayBoardGame(Cell currentCell, Cell[,] board,int rowMax,int columnMax)
+        public Cell playBoardGame(Cell currentCell, Cell[,] board,int rowMax,int columnMax)
         {
 
             List<Cell> neighbours = new List<Cell>();
@@ -130,6 +130,14 @@ namespace GameOfLife
                 return currentCell;
             }
             return currentCell;
+        }
+
+        public Cell[,] getFinalboard(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
+        {
+            Cell changedCell = new Cell();
+            changedCell = playBoardGame(currentCell, board, rowMax, columnMax);
+            board[currentCell.CellPositionX, currentCell.CellPositionY].CellState = changedCell.CellState;
+            return board;
         }
     }
 }
