@@ -169,7 +169,7 @@ namespace GameOfLifeTests
 
 
         [Fact]
-        public void testOverPopulationforCurrentCellLive_WithMoreThanThreeLiveofNeighboursLive()
+        public void testOverPopulationforCurrentCellLive_WithMoreThanThreeLiveofNeighboursDead()
         {
             Cell currentCell = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 1 };
 
