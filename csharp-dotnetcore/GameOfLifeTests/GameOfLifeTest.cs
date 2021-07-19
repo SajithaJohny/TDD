@@ -8,88 +8,19 @@ namespace GameOfLifeTests
     public class GameOfLifeTest
     {
         [Fact]
-        public void testUnderpopulation()
-        {
-
-            Cell currentCell = new Cell() { CellState = "Live" };
-            Cell cell2 = new Cell() { CellState = "Live" };
-            Cell cell3 = new Cell() { CellState = "Dead" };
-            Cell cell4 = new Cell() { CellState = "Dead" };
-            List<Cell> neighbours = new List<Cell>() { cell2, cell3, cell4 };
-            GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playGame(currentCell, neighbours).CellState.Should().NotBe("Live");
-
-        }
-
-        [Fact]
-        public void testNextGeneration_withneighbour2Live()
-        {
-            Cell currentCell = new Cell() { CellState = "Live" };
-            Cell cell2 = new Cell() { CellState = "Dead" };
-            Cell cell3 = new Cell() { CellState = "Live" };
-            Cell cell4 = new Cell() { CellState = "Live" };
-            List<Cell> neighbours = new List<Cell>() { cell2, cell3, cell4 };
-
-            GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playGame(currentCell, neighbours).CellState.Should().Be("Live");
-
-        }
-        [Fact]
-        public void testNextGeneration__withneighbour3Live()
-        {
-            Cell currentCell = new Cell() { CellState = "Live" };
-            Cell cell2 = new Cell() { CellState = "Live" };
-            Cell cell3 = new Cell() { CellState = "Live" };
-            Cell cell4 = new Cell() { CellState = "Live" };
-            List<Cell> neighbours = new List<Cell>() { cell2, cell3, cell4 };
-
-            GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playGame(currentCell, neighbours).CellState.Should().Be("Live");
-
-        }
-
-        [Fact]
-        public void testOverPopulation()
-        {
-            Cell currentCell = new Cell() { CellState = "Live" };
-            Cell cell2 = new Cell() { CellState = "Live" };
-            Cell cell3 = new Cell() { CellState = "Live" };
-            Cell cell4 = new Cell() { CellState = "Live" };
-            Cell cell5 = new Cell() { CellState = "Live" };
-            List<Cell> neighbours = new List<Cell>() { cell2, cell3, cell4, cell5 };
-
-            GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playGame(currentCell, neighbours).CellState.Should().Be("Dead");
-
-        }
-
-        [Fact]
-        public void testReproduction()
-        {
-            Cell currentCell = new Cell() { CellState = "Dead" };
-            Cell cell2 = new Cell() { CellState = "Live" };
-            Cell cell3 = new Cell() { CellState = "Live" };
-            Cell cell4 = new Cell() { CellState = "Live" };
-            List<Cell> neighbours = new List<Cell>() { cell2, cell3, cell4 };
-
-            GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playGame(currentCell, neighbours).CellState.Should().Be("Live");
-
-        }
-        [Fact]
         public void testUnderpopulationforCurrentCellLive_WithFewerThanTwoLiveofNeighboursDies()
         {
-            Cell currentCell = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
+            Cell currentCell = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
 
-            Cell cellx0y0 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
-            Cell cellx0y1 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 1 };
-            Cell cellx0y2 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 2 };
-            Cell cellx1y0 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 0 };
-            Cell cellx1y1 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 1 };
-            Cell cellx1y2 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 2 };
-            Cell cellx2y0 = new Cell() { CellState = "Live", CellPositionX = 2, CellPositionY = 0 };
-            Cell cellx2y1 = new Cell() { CellState = "Live", CellPositionX = 2, CellPositionY = 1 };
-            Cell cellx2y2 = new Cell() { CellState = "Live", CellPositionX = 2, CellPositionY = 2 };
+            Cell cellx0y0 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
+            Cell cellx0y1 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 1 };
+            Cell cellx0y2 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 2 };
+            Cell cellx1y0 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 0 };
+            Cell cellx1y1 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 1 };
+            Cell cellx1y2 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 2 };
+            Cell cellx2y0 = new Cell() { CellState = true, CellPositionX = 2, CellPositionY = 0 };
+            Cell cellx2y1 = new Cell() { CellState = true, CellPositionX = 2, CellPositionY = 1 };
+            Cell cellx2y2 = new Cell() { CellState = true, CellPositionX = 2, CellPositionY = 2 };
 
             const int rowMax = 3;
             const int columnMax = 3;
@@ -102,24 +33,24 @@ namespace GameOfLifeTests
             };
 
             GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().NotBe("Live"); ;
+            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().BeFalse(); ;
 
         }
 
         [Fact]
         public void testNextGenerationforCurrentCellLive_WithTw0LiveofNeighboursLive()
         {
-            Cell currentCell = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
+            Cell currentCell = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
 
-            Cell cellx0y0 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
-            Cell cellx0y1 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 1 };
-            Cell cellx0y2 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 2 };
-            Cell cellx1y0 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 0 };
-            Cell cellx1y1 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 1 };
-            Cell cellx1y2 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 2 };
-            Cell cellx2y0 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 0 };
-            Cell cellx2y1 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 1 };
-            Cell cellx2y2 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 2 };
+            Cell cellx0y0 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
+            Cell cellx0y1 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 1 };
+            Cell cellx0y2 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 2 };
+            Cell cellx1y0 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 0 };
+            Cell cellx1y1 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 1 };
+            Cell cellx1y2 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 2 };
+            Cell cellx2y0 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 0 };
+            Cell cellx2y1 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 1 };
+            Cell cellx2y2 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 2 };
 
             int rowMax = 3;
             int columnMax = 3;
@@ -132,7 +63,7 @@ namespace GameOfLifeTests
             };
 
             GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be("Live");
+            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be(true);
 
         }
 
@@ -140,17 +71,17 @@ namespace GameOfLifeTests
         [Fact]
         public void testNextGenerationforCurrentCellLive_WithThreeLiveofNeighboursLive()
         {
-            Cell currentCell = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
+            Cell currentCell = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
 
-            Cell cellx0y0 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
-            Cell cellx0y1 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 1 };
-            Cell cellx0y2 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 2 };
-            Cell cellx1y0 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 0 };
-            Cell cellx1y1 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 1 };
-            Cell cellx1y2 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 2 };
-            Cell cellx2y0 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 0 };
-            Cell cellx2y1 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 1 };
-            Cell cellx2y2 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 2 };
+            Cell cellx0y0 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
+            Cell cellx0y1 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 1 };
+            Cell cellx0y2 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 2 };
+            Cell cellx1y0 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 0 };
+            Cell cellx1y1 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 1 };
+            Cell cellx1y2 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 2 };
+            Cell cellx2y0 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 0 };
+            Cell cellx2y1 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 1 };
+            Cell cellx2y2 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 2 };
 
             int rowMax = 3;
             int columnMax = 3;
@@ -163,7 +94,7 @@ namespace GameOfLifeTests
             };
 
             GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be("Live");
+            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be(true);
 
         }
 
@@ -171,17 +102,17 @@ namespace GameOfLifeTests
         [Fact]
         public void testOverPopulationforCurrentCellLive_WithMoreThanThreeLiveofNeighboursDead()
         {
-            Cell currentCell = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 1 };
+            Cell currentCell = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 1 };
 
-            Cell cellx0y0 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
-            Cell cellx0y1 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 1 };
-            Cell cellx0y2 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 2 };
-            Cell cellx1y0 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 0 };
-            Cell cellx1y1 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 1 };
-            Cell cellx1y2 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 2 };
-            Cell cellx2y0 = new Cell() { CellState = "Live", CellPositionX = 2, CellPositionY = 0 };
-            Cell cellx2y1 = new Cell() { CellState = "Live", CellPositionX = 2, CellPositionY = 1 };
-            Cell cellx2y2 = new Cell() { CellState = "Live", CellPositionX = 2, CellPositionY = 2 };
+            Cell cellx0y0 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
+            Cell cellx0y1 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 1 };
+            Cell cellx0y2 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 2 };
+            Cell cellx1y0 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 0 };
+            Cell cellx1y1 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 1 };
+            Cell cellx1y2 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 2 };
+            Cell cellx2y0 = new Cell() { CellState = true, CellPositionX = 2, CellPositionY = 0 };
+            Cell cellx2y1 = new Cell() { CellState = true, CellPositionX = 2, CellPositionY = 1 };
+            Cell cellx2y2 = new Cell() { CellState = true, CellPositionX = 2, CellPositionY = 2 };
 
             int rowMax = 3;
             int columnMax = 3;
@@ -194,7 +125,7 @@ namespace GameOfLifeTests
             };
 
             GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be("Dead");
+            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be(false);
 
         }
 
@@ -202,17 +133,17 @@ namespace GameOfLifeTests
         [Fact]
         public void testReproductionforCurrentCellDead_WithexactlyThreeLiveofNeighboursLive()
         {
-            Cell currentCell = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 0 };
+            Cell currentCell = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 0 };
 
-            Cell cellx0y0 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 0 };
-            Cell cellx0y1 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 1 };
-            Cell cellx0y2 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 2 };
-            Cell cellx1y0 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 0 };
-            Cell cellx1y1 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 1 };
-            Cell cellx1y2 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 2 };
-            Cell cellx2y0 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 0 };
-            Cell cellx2y1 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 1 };
-            Cell cellx2y2 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 2 };
+            Cell cellx0y0 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 0 };
+            Cell cellx0y1 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 1 };
+            Cell cellx0y2 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 2 };
+            Cell cellx1y0 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 0 };
+            Cell cellx1y1 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 1 };
+            Cell cellx1y2 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 2 };
+            Cell cellx2y0 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 0 };
+            Cell cellx2y1 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 1 };
+            Cell cellx2y2 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 2 };
 
             int rowMax = 3;
             int columnMax = 3;
@@ -225,24 +156,24 @@ namespace GameOfLifeTests
             };
 
             GameofLifeDev gameoflife = new GameofLifeDev();
-            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be("Live");
+            gameoflife.playBoardGame(currentCell, board, rowMax, columnMax).CellState.Should().Be(true);
 
         }
 
         [Fact]
         public void testFinalBoard_currentBoardandFinalBoardLengthshouldbeEqual()
         {
-            Cell currentCell = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
+            Cell currentCell = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
 
-            Cell cellx0y0 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 0 };
-            Cell cellx0y1 = new Cell() { CellState = "Live", CellPositionX = 0, CellPositionY = 1 };
-            Cell cellx0y2 = new Cell() { CellState = "Dead", CellPositionX = 0, CellPositionY = 2 };
-            Cell cellx1y0 = new Cell() { CellState = "Live", CellPositionX = 1, CellPositionY = 0 };
-            Cell cellx1y1 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 1 };
-            Cell cellx1y2 = new Cell() { CellState = "Dead", CellPositionX = 1, CellPositionY = 2 };
-            Cell cellx2y0 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 0 };
-            Cell cellx2y1 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 1 };
-            Cell cellx2y2 = new Cell() { CellState = "Dead", CellPositionX = 2, CellPositionY = 2 };
+            Cell cellx0y0 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 0 };
+            Cell cellx0y1 = new Cell() { CellState = true, CellPositionX = 0, CellPositionY = 1 };
+            Cell cellx0y2 = new Cell() { CellState = false, CellPositionX = 0, CellPositionY = 2 };
+            Cell cellx1y0 = new Cell() { CellState = true, CellPositionX = 1, CellPositionY = 0 };
+            Cell cellx1y1 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 1 };
+            Cell cellx1y2 = new Cell() { CellState = false, CellPositionX = 1, CellPositionY = 2 };
+            Cell cellx2y0 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 0 };
+            Cell cellx2y1 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 1 };
+            Cell cellx2y2 = new Cell() { CellState = false, CellPositionX = 2, CellPositionY = 2 };
 
             int rowMax = 3;
             int columnMax = 3;
