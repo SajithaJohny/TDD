@@ -9,7 +9,7 @@ namespace GameOfLife
         List<Cell> neighbours = new List<Cell>();
         static public void Main(String[] args)
         {
-
+            
         }
         public Cell[,] getUpdatedboard(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
@@ -18,33 +18,14 @@ namespace GameOfLife
         }
         public bool isCellALive(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
-            bool loopConditionSkip = false;
-            for (int x = 0; x <= rowMax; x++)
-            {
-                if (loopConditionSkip)
-                    break;
-                for (int y = 0; y <= columnMax; y++)
-                {
-                    //Find current cell match from array loop
-                    if (currentCell.CellPositionX == x && currentCell.CellPositionY == y)
-                    {
-                        findNeighbours(rowMax, columnMax, x, y, board);
-                        loopConditionSkip = true;
-                        break;
-                    }
-
-                }
-            }
+            findNeighbours(rowMax, columnMax, currentCell.CellPositionX, currentCell.CellPositionY, board);
             return checkIsCellALive(currentCell);
         }
 
         private bool checkIsCellALive(Cell currentCell)
         {
-            int deadStateCount = 0;
             int liveStateCount = 0;
-
-            deadStateCount = neighbours.Select(x => x.isLive == false).Count();
-            liveStateCount = neighbours.Count - deadStateCount;
+            liveStateCount = neighbours.Where(x => x.isLive == true).Count();
 
             switch (currentCell.isLive)
             {
@@ -70,7 +51,7 @@ namespace GameOfLife
                 case false:
                     //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
                     if (liveStateCount == 3)
-                        return currentCell.isLive;
+                        return currentCell.isLive = true;
                     break;
 
             }
