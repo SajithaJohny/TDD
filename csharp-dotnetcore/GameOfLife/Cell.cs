@@ -8,8 +8,8 @@ namespace GameOfLife
 {
     public class Cell
     {
-        public string CellState;
         public int CellPositionX;
         public int CellPositionY;
+        public bool isLive;
     }
 }
