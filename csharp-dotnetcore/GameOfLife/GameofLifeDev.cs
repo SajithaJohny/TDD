@@ -80,60 +80,45 @@ namespace GameOfLife
 
         private int getNeighbourCount(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
-            bool loopConditionContinue = false;
-
             List<Cell> neighbours = new List<Cell>();
 
-            for (int x = 0; x <= rowMax; x++)
-            {
-                if (loopConditionContinue)
-                {
-                    break;
-                }
-                for (int y = 0; y <= columnMax; y++)
-                {
-                    if (currentCell.CellPositionX == x && currentCell.CellPositionY == y)
-                    {
-                        if (x < rowMax && y <= columnMax - 1)
-                        {
-                            neighbours.Add(board[x, y + 1]);
-                        }
-                        if (x < rowMax && y < columnMax)
-                        {
-                            neighbours.Add(board[x + 1, y]);
-                            neighbours.Add(board[x + 1, y + 1]);
-                        }
-                        if (x <= rowMax && y <= columnMax && y != 0)
-                        {
-                            neighbours.Add(board[x, y - 1]);
-                        }
-                        if (x < rowMax && y <= columnMax && y != 0)
-                        {
-                            neighbours.Add(board[x + 1, y - 1]);
-                        }
-                        if (x <= rowMax && y <= columnMax && y != 0 && x != 0)
-                        {
-                            neighbours.Add(board[x - 1, y - 1]);
-                        }
-                        if (x <= rowMax && y < columnMax && x != 0)
-                        {
-                            neighbours.Add(board[x - 1, y]);
-                        }
-                        if (x <= rowMax && y <= columnMax - 1 && x != 0)
-                        {
-                            neighbours.Add(board[x - 1, y + 1]);
-                        }
+            int x = currentCell.CellPositionX;
+            int y = currentCell.CellPositionY;
 
-                        loopConditionContinue = true;
-                        break;
-                    }
-                }
+            if (x < rowMax && y <= columnMax - 1)
+            {
+                neighbours.Add(board[x, y + 1]);
+            }
+            if (x < rowMax && y < columnMax)
+            {
+                neighbours.Add(board[x + 1, y]);
+                neighbours.Add(board[x + 1, y + 1]);
+            }
+            if (x <= rowMax && y <= columnMax && y != 0)
+            {
+                neighbours.Add(board[x, y - 1]);
+            }
+            if (x < rowMax && y <= columnMax && y != 0)
+            {
+                neighbours.Add(board[x + 1, y - 1]);
+            }
+            if (x <= rowMax && y <= columnMax && y != 0 && x != 0)
+            {
+                neighbours.Add(board[x - 1, y - 1]);
+            }
+            if (x <= rowMax && y < columnMax && x != 0)
+            {
+                neighbours.Add(board[x - 1, y]);
+            }
+            if (x <= rowMax && y <= columnMax - 1 && x != 0)
+            {
+                neighbours.Add(board[x - 1, y + 1]);
             }
 
             int liveCount = 0;
-            foreach(var n in neighbours)
+            foreach (var n in neighbours)
             {
-                if(n.CellState == "Live")
+                if (n.CellState == "Live")
                 {
                     liveCount++;
                 }
