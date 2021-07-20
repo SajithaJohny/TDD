@@ -17,6 +17,7 @@ namespace GameOfLifeTests
         {
             gameoflife = new GameofLifeDev();
         }
+
         [Fact]
         public void TestUnderpopulationforCurrentCellLive_WithFewerThanTwoLiveofNeighboursDies()
         {
@@ -34,7 +35,6 @@ namespace GameOfLifeTests
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeFalse();
-
         }
 
 
@@ -55,7 +55,6 @@ namespace GameOfLifeTests
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
-
         }
 
 
@@ -134,7 +133,6 @@ namespace GameOfLifeTests
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
 
             generateCurrentBoard();
-
             gameoflife.GetUpdatedboard(currentCell, board, rowMax, columnMax).Length.Should().Be(board.Length);
         }
 

@@ -31,7 +31,8 @@ namespace GameOfLife
             {
                 case true:
                     //Any live cell with less than two live neighbours dies, as if by underpopulation.
-                    if (liveStateCount < 2)
+                    //or Any live cell with more than three live neighbours dies, as if by overpopulation.
+                    if (liveStateCount < 2 || liveStateCount > 3)
                     {
                         currentCell.isLive = false;
                         return currentCell.isLive;
@@ -39,20 +40,12 @@ namespace GameOfLife
                     //Any live cell with two or three live neighbours lives on to the next generation.
                     else if (liveStateCount == 2 || liveStateCount == 3)
                         return currentCell.isLive;
-
-                    //Any live cell with more than three live neighbours dies, as if by overpopulation.
-                    else if (liveStateCount > 3)
-                    {
-                        currentCell.isLive = false;
-                        return currentCell.isLive;
-                    }
                     break;
                 case false:
                     //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
                     if (liveStateCount == 3)
                         return currentCell.isLive = true;
                     break;
-
             }
             return currentCell.isLive;
         }
