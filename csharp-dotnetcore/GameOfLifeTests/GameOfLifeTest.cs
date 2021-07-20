@@ -23,15 +23,15 @@ namespace GameOfLifeTests
         {
             currentCell = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
 
-            cellx0y0 = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
-            cellx0y1 = new Cell() { cellPositionX = 0, cellPositionY = 1, isLive = false };
-            cellx0y2 = new Cell() { cellPositionX = 0, cellPositionY = 2, isLive = false };
-            cellx1y0 = new Cell() { cellPositionX = 1, cellPositionY = 0, isLive = false };
-            cellx1y1 = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = true };
-            cellx1y2 = new Cell() { cellPositionX = 1, cellPositionY = 2, isLive = true };
-            cellx2y0 = new Cell() { cellPositionX = 2, cellPositionY = 0, isLive = true };
-            cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = true };
-            cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = true };
+            cellx0y0 = new Cell() {isLive = true };
+            cellx0y1 = new Cell() {isLive = false };
+            cellx0y2 = new Cell() {isLive = false };
+            cellx1y0 = new Cell() {isLive = false };
+            cellx1y1 = new Cell() {isLive = true };
+            cellx1y2 = new Cell() {isLive = true };
+            cellx2y0 = new Cell() {isLive = true };
+            cellx2y1 = new Cell() {isLive = true };
+            cellx2y2 = new Cell() {isLive = true };
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeFalse();
@@ -43,15 +43,15 @@ namespace GameOfLifeTests
         {
             currentCell = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
 
-            cellx0y0 = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
-            cellx0y1 = new Cell() { cellPositionX = 0, cellPositionY = 1, isLive = true };
-            cellx0y2 = new Cell() { cellPositionX = 0, cellPositionY = 2, isLive = false };
-            cellx1y0 = new Cell() { cellPositionX = 1, cellPositionY = 0, isLive = true };
-            cellx1y1 = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = false };
-            cellx1y2 = new Cell() { cellPositionX = 1, cellPositionY = 2, isLive = false };
-            cellx2y0 = new Cell() { cellPositionX = 2, cellPositionY = 0, isLive = false };
-            cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
-            cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
+            cellx0y0 = new Cell() {isLive = true };
+            cellx0y1 = new Cell() {isLive = true };
+            cellx0y2 = new Cell() {isLive = false };
+            cellx1y0 = new Cell() {isLive = true };
+            cellx1y1 = new Cell() {isLive = false };
+            cellx1y2 = new Cell() {isLive = false };
+            cellx2y0 = new Cell() {isLive = false };
+            cellx2y1 = new Cell() {isLive = false };
+            cellx2y2 = new Cell() {isLive = false };
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
@@ -63,15 +63,15 @@ namespace GameOfLifeTests
         {
             currentCell = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
 
-            cellx0y0 = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
-            cellx0y1 = new Cell() { cellPositionX = 0, cellPositionY = 1, isLive = true };
-            cellx0y2 = new Cell() { cellPositionX = 0, cellPositionY = 2, isLive = false };
-            cellx1y0 = new Cell() { cellPositionX = 1, cellPositionY = 0, isLive = true };
-            cellx1y1 = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = true };
-            cellx1y2 = new Cell() { cellPositionX = 1, cellPositionY = 2, isLive = false };
-            cellx2y0 = new Cell() { cellPositionX = 2, cellPositionY = 0, isLive = false };
-            cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
-            cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
+            cellx0y0 = new Cell() {isLive = true };
+            cellx0y1 = new Cell() {isLive = true };
+            cellx0y2 = new Cell() {isLive = false };
+            cellx1y0 = new Cell() {isLive = true };
+            cellx1y1 = new Cell() {isLive = true };
+            cellx1y2 = new Cell() {isLive = false };
+            cellx2y0 = new Cell() {isLive = false };
+            cellx2y1 = new Cell() {isLive = false };
+            cellx2y2 = new Cell() {isLive = false };
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
@@ -83,15 +83,15 @@ namespace GameOfLifeTests
         {
             currentCell = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = true };
 
-            cellx0y0 = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
-            cellx0y1 = new Cell() { cellPositionX = 0, cellPositionY = 1, isLive = true };
-            cellx0y2 = new Cell() { cellPositionX = 0, cellPositionY = 2, isLive = true };
-            cellx1y0 = new Cell() { cellPositionX = 1, cellPositionY = 0, isLive = true };
-            cellx1y1 = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = true };
-            cellx1y2 = new Cell() { cellPositionX = 1, cellPositionY = 2, isLive = true };
-            cellx2y0 = new Cell() { cellPositionX = 2, cellPositionY = 0, isLive = true };
-            cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = true };
-            cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = true };
+            cellx0y0 = new Cell() {isLive = true };
+            cellx0y1 = new Cell() {isLive = true };
+            cellx0y2 = new Cell() {isLive = true };
+            cellx1y0 = new Cell() {isLive = true };
+            cellx1y1 = new Cell() {isLive = true };
+            cellx1y2 = new Cell() {isLive = true };
+            cellx2y0 = new Cell() {isLive = true };
+            cellx2y1 = new Cell() {isLive = true };
+            cellx2y2 = new Cell() {isLive = true };
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeFalse();
@@ -103,15 +103,15 @@ namespace GameOfLifeTests
         {
             currentCell = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = false };
 
-            cellx0y0 = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = false };
-            cellx0y1 = new Cell() { cellPositionX = 0, cellPositionY = 1, isLive = true };
-            cellx0y2 = new Cell() { cellPositionX = 0, cellPositionY = 2, isLive = false };
-            cellx1y0 = new Cell() { cellPositionX = 1, cellPositionY = 0, isLive = true };
-            cellx1y1 = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = false };
-            cellx1y2 = new Cell() { cellPositionX = 1, cellPositionY = 2, isLive = true };
-            cellx2y0 = new Cell() { cellPositionX = 2, cellPositionY = 0, isLive = false };
-            cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
-            cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
+            cellx0y0 = new Cell() {isLive = false };
+            cellx0y1 = new Cell() {isLive = true };
+            cellx0y2 = new Cell() {isLive = false };
+            cellx1y0 = new Cell() {isLive = true };
+            cellx1y1 = new Cell() {isLive = false };
+            cellx1y2 = new Cell() {isLive = true };
+            cellx2y0 = new Cell() {isLive = false };
+            cellx2y1 = new Cell() {isLive = false };
+            cellx2y2 = new Cell() {isLive = false };
 
             generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
@@ -122,15 +122,15 @@ namespace GameOfLifeTests
         {
             currentCell = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
 
-            cellx0y0 = new Cell() { cellPositionX = 0, cellPositionY = 0, isLive = true };
-            cellx0y1 = new Cell() { cellPositionX = 0, cellPositionY = 1, isLive = true };
-            cellx0y2 = new Cell() { cellPositionX = 0, cellPositionY = 2, isLive = false };
-            cellx1y0 = new Cell() { cellPositionX = 1, cellPositionY = 0, isLive = true };
-            cellx1y1 = new Cell() { cellPositionX = 1, cellPositionY = 1, isLive = false };
-            cellx1y2 = new Cell() { cellPositionX = 1, cellPositionY = 2, isLive = false };
-            cellx2y0 = new Cell() { cellPositionX = 2, cellPositionY = 0, isLive = false };
-            cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
-            cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
+            cellx0y0 = new Cell() {isLive = true };
+            cellx0y1 = new Cell() {isLive = true };
+            cellx0y2 = new Cell() {isLive = false };
+            cellx1y0 = new Cell() {isLive = true };
+            cellx1y1 = new Cell() {isLive = false };
+            cellx1y2 = new Cell() {isLive = false };
+            cellx2y0 = new Cell() {isLive = false };
+            cellx2y1 = new Cell() {isLive = false };
+            cellx2y2 = new Cell() {isLive = false };
 
             generateCurrentBoard();
             gameoflife.GetUpdatedboard(currentCell, board, rowMax, columnMax).Length.Should().Be(board.Length);
