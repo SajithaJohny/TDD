@@ -32,14 +32,7 @@ namespace GameOfLifeTests
             cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = true };
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = true };
 
-
-            board = new Cell[rowMax, columnMax]
-            {
-             {cellx0y0, cellx0y1, cellx0y2},
-             {cellx1y0, cellx1y1, cellx1y2},
-             {cellx2y0, cellx2y1, cellx2y2}
-            };
-
+            generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeFalse();
 
         }
@@ -60,13 +53,7 @@ namespace GameOfLifeTests
             cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
 
-            board = new Cell[rowMax, columnMax]
-            {
-            {cellx0y0, cellx0y1, cellx0y2},
-            {cellx1y0, cellx1y1, cellx1y2},
-            {cellx2y0, cellx2y1, cellx2y2}
-            };
-
+            generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
 
         }
@@ -87,15 +74,8 @@ namespace GameOfLifeTests
             cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
 
-            board = new Cell[rowMax, columnMax]
-            {
-          {cellx0y0, cellx0y1, cellx0y2},
-          {cellx1y0, cellx1y1, cellx1y2},
-          {cellx2y0, cellx2y1, cellx2y2}
-            };
-
+            generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
-
         }
 
 
@@ -114,15 +94,8 @@ namespace GameOfLifeTests
             cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = true };
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = true };
 
-            board = new Cell[rowMax, columnMax]
-            {
-          {cellx0y0, cellx0y1, cellx0y2},
-          {cellx1y0, cellx1y1, cellx1y2},
-          {cellx2y0, cellx2y1, cellx2y2}
-            };
-
+            generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeFalse();
-
         }
 
 
@@ -141,15 +114,8 @@ namespace GameOfLifeTests
             cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
 
-            board = new Cell[rowMax, columnMax]
-            {
-          {cellx0y0, cellx0y1, cellx0y2},
-          {cellx1y0, cellx1y1, cellx1y2},
-          {cellx2y0, cellx2y1, cellx2y2}
-            };
-
+            generateCurrentBoard();
             gameoflife.IsCellALive(currentCell, board, rowMax, columnMax).Should().BeTrue();
-
         }
 
         [Fact]
@@ -167,14 +133,19 @@ namespace GameOfLifeTests
             cellx2y1 = new Cell() { cellPositionX = 2, cellPositionY = 1, isLive = false };
             cellx2y2 = new Cell() { cellPositionX = 2, cellPositionY = 2, isLive = false };
 
-            board = new Cell[rowMax, columnMax]
-            {
-          {cellx0y0, cellx0y1, cellx0y2},
-          {cellx1y0, cellx1y1, cellx1y2},
-          {cellx2y0, cellx2y1, cellx2y2}
-            };
+            generateCurrentBoard();
 
             gameoflife.GetUpdatedboard(currentCell, board, rowMax, columnMax).Length.Should().Be(board.Length);
+        }
+
+        private void generateCurrentBoard()
+        {
+            board = new Cell[rowMax, columnMax]
+            {
+              {cellx0y0, cellx0y1, cellx0y2},
+              {cellx1y0, cellx1y1, cellx1y2},
+              {cellx2y0, cellx2y1, cellx2y2}
+            };
         }
 
     }
