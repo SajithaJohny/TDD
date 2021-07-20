@@ -11,42 +11,27 @@ namespace GameOfLife
         }
         public Cell playBoardGame(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
-            int liveStateCount = 0;
-            liveStateCount = getNeighbourCount(currentCell, board, rowMax, columnMax);
+            int liveStateCount = getNeighbourCount(currentCell, board, rowMax, columnMax);
 
             switch (liveStateCount)
             {
                 case 0:
                 case 1:
-                    currentCell.CellState = false;
+                    if (currentCell.CellState)
+                        currentCell.CellState = false;
+                    return currentCell;
+                case 2:
+                    if (currentCell.CellState)
+                        currentCell.CellState = true;
+                    return currentCell;
+                case 3:
+                    currentCell.CellState = true;
+                    return currentCell;
+                default:
+                    if (currentCell.CellState)
+                        currentCell.CellState = false;
                     return currentCell;
             }
-
-            //Any live cell with less than two live neighbours dies, as if by underpopulation.
-            if (currentCell.CellState && liveStateCount < 2)
-            {
-                currentCell.CellState = false;
-                return currentCell;
-            }
-            //Any live cell with two or three live neighbours lives on to the next generation.
-            else if ((currentCell.CellState) && (liveStateCount == 2 || liveStateCount == 3))
-            {
-                currentCell.CellState = true;
-                return currentCell;
-            }
-            //Any live cell with more than three live neighbours dies, as if by overpopulation.
-            else if ((currentCell.CellState) && (liveStateCount > 3))
-            {
-                currentCell.CellState = false;
-                return currentCell;
-            }
-            //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-            else if ((currentCell.CellState == false) && (liveStateCount == 3))
-            {
-                currentCell.CellState = true;
-                return currentCell;
-            }
-            return currentCell;
         }
 
         public Cell[,] getFinalboard(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
@@ -63,46 +48,61 @@ namespace GameOfLife
 
             int x = currentCell.CellPositionX;
             int y = currentCell.CellPositionY;
+           
 
-            if (x < rowMax && y <= columnMax - 1)
+            for (var i = Math.Max(0, x - 1); i <= Math.Min(x + 1, rowMax); i++)
             {
-                if (board[x, y + 1].CellState == true)
-                    liveCount++;
+                for (var j = Math.Max(0, y - 1); j <= Math.Min(y + 1, columnMax); j++)
+                {
+                    if (x != i || y != j)
+                    {
+                        if (board[i, j].CellState)
+                            liveCount++;
+                    }
+                }
             }
-            if (x < rowMax && y < columnMax)
-            {
-                if (board[x + 1, y].CellState == true)
-                    liveCount++;
-                if (board[x + 1, y + 1].CellState == true)
-                    liveCount++;
-            }
-            if (x <= rowMax && y <= columnMax && y != 0)
-            {
-                if (board[x, y - 1].CellState == true)
-                    liveCount++;
-            }
-            if (x < rowMax && y <= columnMax && y != 0)
-            {
-                if (board[x + 1, y - 1].CellState == true)
-                    liveCount++;
-            }
-            if (x <= rowMax && y <= columnMax && y != 0 && x != 0)
-            {
-                if (board[x - 1, y - 1].CellState == true)
-                    liveCount++;
-            }
-            if (x <= rowMax && y < columnMax && x != 0)
-            {
-                if (board[x - 1, y].CellState == true)
-                    liveCount++;
-            }
-            if (x <= rowMax && y <= columnMax - 1 && x != 0)
-            {
-                if (board[x - 1, y + 1].CellState == true)
-                    liveCount++;
-            }
-
             return liveCount;
         }
+
+
+
+        //if (x < rowMax && y <= columnMax - 1 && board[x, y + 1].CellState)
+        //{
+        //    liveCount++;
+        //}
+        //if (x < rowMax && y < columnMax && ((board[x + 1, y].CellState)))
+        //    liveCount++;
+        //if (x < rowMax && y < columnMax && (board[x + 1, y + 1].CellState))
+
+        //    liveCount++;
+
+        //if (x <= rowMax && y <= columnMax && y != 0)
+        //{
+        //    if (board[x, y - 1].CellState)
+        //        liveCount++;
+        //}
+        //if (x < rowMax && y <= columnMax && y != 0)
+        //{
+        //    if (board[x + 1, y - 1].CellState)
+        //        liveCount++;
+        //}
+        //if (x <= rowMax && y <= columnMax && y != 0 && x != 0)
+        //{
+        //    if (board[x - 1, y - 1].CellState)
+        //        liveCount++;
+        //}
+        //if (x <= rowMax && y < columnMax && x != 0)
+        //{
+        //    if (board[x - 1, y].CellState)
+        //        liveCount++;
+        //}
+        //if (x <= rowMax && y <= columnMax - 1 && x != 0)
+        //{
+        //    if (board[x - 1, y + 1].CellState)
+        //        liveCount++;
+        //}
+
+
+
     }
 }
