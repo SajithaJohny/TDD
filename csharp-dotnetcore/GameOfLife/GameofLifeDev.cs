@@ -9,20 +9,20 @@ namespace GameOfLife
         List<Cell> neighbours = new List<Cell>();
         static public void Main(String[] args)
         {
-            
+
         }
-        public Cell[,] getUpdatedboard(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
+        public Cell[,] GetUpdatedboard(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
-            board[currentCell.CellPositionX, currentCell.CellPositionY].isLive = isCellALive(currentCell, board, rowMax, columnMax);
+            board[currentCell.cellPositionX, currentCell.cellPositionY].isLive = IsCellALive(currentCell, board, rowMax, columnMax);
             return board;
         }
-        public bool isCellALive(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
+        public bool IsCellALive(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
-            findNeighbours(rowMax, columnMax, currentCell.CellPositionX, currentCell.CellPositionY, board);
-            return checkIsCellALive(currentCell);
+            FindNeighbours(rowMax, columnMax, currentCell.cellPositionX, currentCell.cellPositionY, board);
+            return CheckIsCellALive(currentCell);
         }
 
-        private bool checkIsCellALive(Cell currentCell)
+        private bool CheckIsCellALive(Cell currentCell)
         {
             int liveStateCount = 0;
             liveStateCount = neighbours.Where(x => x.isLive == true).Count();
@@ -58,7 +58,7 @@ namespace GameOfLife
             return currentCell.isLive;
         }
 
-        private void findNeighbours(int rowMax, int columnMax, int x, int y, Cell[,] board)
+        private void FindNeighbours(int rowMax, int columnMax, int x, int y, Cell[,] board)
         {
             //Find neighbours of current cell
             if (x < rowMax)

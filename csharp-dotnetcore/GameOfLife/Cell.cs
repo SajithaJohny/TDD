@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public class Cell
     {
-        public int CellPositionX;
-        public int CellPositionY;
+        public int cellPositionX;
+        public int cellPositionY;
         public bool isLive;
     }
 }
