@@ -38,9 +38,8 @@ namespace GameOfLife
                     }
                     //Any live cell with two or three live neighbours lives on to the next generation.
                     else if (liveStateCount == 2 || liveStateCount == 3)
-                    {
                         return currentCell.isLive;
-                    }
+
                     //Any live cell with more than three live neighbours dies, as if by overpopulation.
                     else if (liveStateCount > 3)
                     {
@@ -64,9 +63,8 @@ namespace GameOfLife
             if (x < rowMax)
             {
                 if (y <= columnMax - 1)
-                {
                     neighbours.Add((Cell)board.GetValue(x, y + 1));
-                }
+
                 if (y < columnMax)
                 {
                     neighbours.Add((Cell)board.GetValue(x + 1, y));
@@ -76,28 +74,21 @@ namespace GameOfLife
             if (y != 0 && y <= columnMax)
             {
                 if (x <= rowMax)
-                {
                     neighbours.Add((Cell)board.GetValue(x, y - 1));
-                }
+
                 if (x < rowMax)
-                {
                     neighbours.Add((Cell)board.GetValue(x + 1, y - 1));
-                }
+
                 if (x <= rowMax && x != 0)
-                {
                     neighbours.Add((Cell)board.GetValue(x - 1, y - 1));
-                }
             }
             if (x != 0 && x <= rowMax)
             {
                 if (y < columnMax)
-                {
                     neighbours.Add((Cell)board.GetValue(x - 1, y));
-                }
+
                 if (y <= columnMax - 1)
-                {
                     neighbours.Add((Cell)board.GetValue(x - 1, y + 1));
-                }
             }
         }
     }
