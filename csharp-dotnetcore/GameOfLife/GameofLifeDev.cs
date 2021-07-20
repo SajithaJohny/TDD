@@ -63,46 +63,5 @@ namespace GameOfLife
             }
             return liveCount;
         }
-
-
-
-        //if (x < rowMax && y <= columnMax - 1 && board[x, y + 1].CellState)
-        //{
-        //    liveCount++;
-        //}
-        //if (x < rowMax && y < columnMax && ((board[x + 1, y].CellState)))
-        //    liveCount++;
-        //if (x < rowMax && y < columnMax && (board[x + 1, y + 1].CellState))
-
-        //    liveCount++;
-
-        //if (x <= rowMax && y <= columnMax && y != 0)
-        //{
-        //    if (board[x, y - 1].CellState)
-        //        liveCount++;
-        //}
-        //if (x < rowMax && y <= columnMax && y != 0)
-        //{
-        //    if (board[x + 1, y - 1].CellState)
-        //        liveCount++;
-        //}
-        //if (x <= rowMax && y <= columnMax && y != 0 && x != 0)
-        //{
-        //    if (board[x - 1, y - 1].CellState)
-        //        liveCount++;
-        //}
-        //if (x <= rowMax && y < columnMax && x != 0)
-        //{
-        //    if (board[x - 1, y].CellState)
-        //        liveCount++;
-        //}
-        //if (x <= rowMax && y <= columnMax - 1 && x != 0)
-        //{
-        //    if (board[x - 1, y + 1].CellState)
-        //        liveCount++;
-        //}
-
-
-
     }
 }
