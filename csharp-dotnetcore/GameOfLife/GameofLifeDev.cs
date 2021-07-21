@@ -78,10 +78,5 @@ namespace GameOfLife
             }
             return liveCount;
         }
-
-
-
-
-
     }
 }
