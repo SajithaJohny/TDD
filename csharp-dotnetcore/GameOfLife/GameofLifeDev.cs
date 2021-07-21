@@ -9,6 +9,15 @@ namespace GameOfLife
         {
 
         }
+
+        /// <summary>
+        /// Play Game of Life
+        /// </summary>
+        /// <param name="currentCell"></param>
+        /// <param name="board"></param>
+        /// <param name="rowMax"></param>
+        /// <param name="columnMax"></param>
+        /// <returns></returns>
         public Cell playBoardGame(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
             int liveStateCount = getNeighbourCount(currentCell, board, rowMax, columnMax);
@@ -42,65 +51,35 @@ namespace GameOfLife
             return board;
         }
 
+        /// <summary>
+        /// Find Neighbour
+        /// </summary>
+        /// <param name="currentCell"></param>
+        /// <param name="board"></param>
+        /// <param name="rowMax"></param>
+        /// <param name="columnMax"></param>
+        /// <returns></returns>
         private int getNeighbourCount(Cell currentCell, Cell[,] board, int rowMax, int columnMax)
         {
             int liveCount = 0;
 
             int x = currentCell.CellPositionX;
             int y = currentCell.CellPositionY;
-           
 
-            for (var i = Math.Max(0, x - 1); i <= Math.Min(x + 1, rowMax); i++)
+
+            for (var i = (x == 0 ? 0 : x - 1); i <= (x == rowMax ? rowMax : x + 1); i++)
             {
-                for (var j = Math.Max(0, y - 1); j <= Math.Min(y + 1, columnMax); j++)
+                for (var j = (y == 0 ? 0 : y - 1); j <= (y == columnMax ? columnMax : y + 1); j++)
                 {
-                    if (x != i || y != j)
-                    {
-                        if (board[i, j].CellState)
-                            liveCount++;
-                    }
+                    if ((x != i || y != j) && board[i, j].CellState)
+                        liveCount++;
+
                 }
             }
             return liveCount;
         }
 
 
-
-        //if (x < rowMax && y <= columnMax - 1 && board[x, y + 1].CellState)
-        //{
-        //    liveCount++;
-        //}
-        //if (x < rowMax && y < columnMax && ((board[x + 1, y].CellState)))
-        //    liveCount++;
-        //if (x < rowMax && y < columnMax && (board[x + 1, y + 1].CellState))
-
-        //    liveCount++;
-
-        //if (x <= rowMax && y <= columnMax && y != 0)
-        //{
-        //    if (board[x, y - 1].CellState)
-        //        liveCount++;
-        //}
-        //if (x < rowMax && y <= columnMax && y != 0)
-        //{
-        //    if (board[x + 1, y - 1].CellState)
-        //        liveCount++;
-        //}
-        //if (x <= rowMax && y <= columnMax && y != 0 && x != 0)
-        //{
-        //    if (board[x - 1, y - 1].CellState)
-        //        liveCount++;
-        //}
-        //if (x <= rowMax && y < columnMax && x != 0)
-        //{
-        //    if (board[x - 1, y].CellState)
-        //        liveCount++;
-        //}
-        //if (x <= rowMax && y <= columnMax - 1 && x != 0)
-        //{
-        //    if (board[x - 1, y + 1].CellState)
-        //        liveCount++;
-        //}
 
 
 
